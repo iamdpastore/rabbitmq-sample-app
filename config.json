@@ -1,0 +1,17 @@
+{
+    "rabbitmq_host": "<route_name>.apps.<cluster_name>.<domain_name>",
+    "rabbitmq_port": 443,
+    "rabbitmq_user": "default_user",
+    "rabbitmq_password": "",
+    "rabbitmq_vhost": "/",
+    "queue_name": "myqueue",
+    "ca_certificate": "certs/ca.pem",
+    "client_certificate": "certs/crt.pem",
+    "client_key": "certs/key.pem",
+    "pause_duration": 5,
+    "max_retries": 5,
+    "base_retry_interval": 5,
+    "queue_arguments": {
+        "x-queue-type": "quorum"
+    }
+}
