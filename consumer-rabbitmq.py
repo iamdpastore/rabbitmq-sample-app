@@ -1,6 +1,7 @@
 import pika
 import ssl
 import json
+import time
 import logging
 
 # Load configuration from external JSON file
@@ -73,11 +74,14 @@ def consume():
         channel.start_consuming()
     except pika.exceptions.AMQPConnectionError as e:
         logging.error(f"Connection error: {e}. Reconnecting...")
-        connection.close()
+        if connection.is_open:
+            connection.close()
         consume()
     except KeyboardInterrupt:
         print('Interrupted!')
-        connection.close()
+        if connection.is_open:
+            connection.close()
 
 if __name__ == "__main__":
     consume()
+
